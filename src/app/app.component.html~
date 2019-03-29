@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>Yo.</h1>
+
 <app-messages></app-messages>
 
 <router-outlet></router-outlet>

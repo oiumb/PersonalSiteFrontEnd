@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from 'rxjs/Rx';
+import { retry } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NetmessagesService {
+	
+	private msgUrl = 'http://localhost:8080/msg';
+
+	constructor(private http: HttpClient) { }
+	
+	getMessages(): Observable<String[]> {
+		return this.http.get<String[]>(this.msgUrl)
+				.pipe( retry(3) );
+	}
+}
